@@ -1,0 +1,9 @@
+.day-component {
+  border-radius: 64px;
+  transition: border 0.5s, border-radius 0.5s; /* Плавен преход за border и border-radius */
+}
+
+.day-component:hover {
+  border: 1px solid black;
+  cursor: pointer;
+}
