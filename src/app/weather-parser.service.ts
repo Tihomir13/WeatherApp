@@ -35,7 +35,7 @@ export class WeatherParserService {
   }
 
   parseDailyWeather({ daily }: any) {
-    return daily.time.map((time: any, index: number) => {
+    const weather = daily.time.map((time: any, index: number) => {
       return {
         timestamp: time * 1000,
         precipitationProb:
@@ -44,8 +44,11 @@ export class WeatherParserService {
         maxTemp: daily.temperature_2m_max[index],
         minTemp: daily.temperature_2m_min[index],
         iconCode: daily.weather_code[index],
+        day: this.parseIntToDay(String(new Date(time * 1000).getDay())),
       };
     });
+    weather[0].day = 'Today';
+    return weather;
   }
 
   parseHourlyWeather({ hourly, current }: any) {
@@ -60,5 +63,29 @@ export class WeatherParserService {
         };
       })
       .filter(({ timestamp }: any) => timestamp >= current.time * 1000);
+  }
+
+  parseIntToDay(dayInNum: any): string {
+    const dayInWord = (() => {
+      switch (dayInNum) {
+        case '1':
+          return 'Monday';
+        case '2':
+          return 'Tuesday';
+        case '3':
+          return 'Wednesday';
+        case '4':
+          return 'Thursday';
+        case '5':
+          return 'Friday';
+        case '6':
+          return 'Saturday';
+        case '0':
+          return 'Sunday';
+        default:
+          return 'Invalid day';
+      }
+    })();
+    return dayInWord;
   }
 }

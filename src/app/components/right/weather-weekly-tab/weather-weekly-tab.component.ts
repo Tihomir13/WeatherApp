@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { WeatherDayComponent } from './weather-day/weather-day.component';
 
 @Component({
@@ -8,4 +8,6 @@ import { WeatherDayComponent } from './weather-day/weather-day.component';
   templateUrl: './weather-weekly-tab.component.html',
   styleUrl: './weather-weekly-tab.component.css',
 })
-export class WeatherWeeklyTabComponent {}
+export class WeatherWeeklyTabComponent {
+  @Input() dailyWeather?: any;
+}

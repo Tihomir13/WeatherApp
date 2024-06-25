@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class DayStatComponent {
   @Input() img: string = '';
-  @Input() statistic: string = '';
+  @Input() statistic?: string = '';
 }

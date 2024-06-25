@@ -1,12 +1,20 @@
 <div class="day-component d-flex align-items-center pt-4 pb-4 ps-3 pe-3">
-  <p class="m-0" style="font-size: 40px">Wednesday</p>
-  <app-day-stat class="ms-4" img="./images/Blur.png" statistic="30%" />
-  <app-day-stat class="ms-4" img="./images/Wind.png" statistic="9km/h" />
-  <app-day-stat class="ms-5" img="./images/Thermometer Up.png" statistic="30" />
+  <p class="m-0" style="font-size: 40px; width: 204px">{{ day }}</p>
+  <app-day-stat
+    class="ms-4"
+    img="./images/Blur.png"
+    [statistic]="precProb + '%'"
+  />
+  <app-day-stat class="ms-4" img="./images/Wind.png" [statistic]="wind" />
+  <app-day-stat
+    class="ms-5"
+    img="./images/Thermometer Up.png"
+    [statistic]="maxTemp"
+  />
   <app-day-stat
     class="ms-4"
     img="./images/Thermometer Down.png"
-    statistic="17"
+    [statistic]="minTemp"
   />
   <img
     class="ms-3"
