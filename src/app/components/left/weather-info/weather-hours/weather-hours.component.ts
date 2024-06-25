@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-weather-hours',
   standalone: true,
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './weather-hours.component.html',
-  styleUrl: './weather-hours.component.css'
+  styleUrl: './weather-hours.component.css',
 })
 export class WeatherHoursComponent {
-
+  @Input() weatherHourly?: any;
 }

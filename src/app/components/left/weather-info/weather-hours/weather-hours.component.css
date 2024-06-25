@@ -1,0 +1,15 @@
+.weather-hourly {
+  border-radius: 10px;
+  box-shadow: inset rgb(red, green, blue, 0.8);
+  max-width: 450px;
+  max-height: 200px; /* Опционално, за да ограничите височината на контейнера */
+  overflow-x: auto; /* Позволява хоризонтално скролиране */
+  overflow-y: auto; /* Позволява вертикално скролиране */
+  text-align: center;
+  scrollbar-width: none; /* Скрива скролбара във Firefox */
+  -ms-overflow-style: none; /* Скрива скролбара в Internet Explorer и Edge */
+}
+
+.weather-hourly::-webkit-scrollbar {
+  display: none; /* Скрива скролбара в Chrome, Safari и Opera */
+}

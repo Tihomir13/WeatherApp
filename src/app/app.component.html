@@ -1,4 +1,10 @@
-<main class="container-fluid d-flex app ">
-  <app-left class="left-section col-12 col-xxl-6"/>
-  <app-right class="right-section col-12 col-xxl-6"/>
+<main class="container-fluid d-flex app">
+  <app-left
+    class="left-section col-12 col-xxl-6"
+    [weather]="{ current: WeatherData?.current, hourly: WeatherData?.hourly }"
+  />
+  <app-right
+    class="right-section col-12 col-xxl-6"
+    [dailyWeather]="WeatherData?.daily"
+  />
 </main>
