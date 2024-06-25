@@ -15,4 +15,5 @@ export class WeatherDayComponent {
   @Input() maxTemp?: string;
   @Input() minTemp?: string;
   @Input() iconCode?: string;
+  @Input() img?: string;
 }

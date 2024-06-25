@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -10,4 +10,5 @@ import { DatePipe } from '@angular/common';
 })
 export class WeatherHoursComponent {
   @Input() weatherHourly?: any;
+  
 }

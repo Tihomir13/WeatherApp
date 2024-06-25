@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { CurrStatComponent } from './curr-stat/curr-stat.component';
 import { WeatherHoursComponent } from './weather-hours/weather-hours.component';
 
