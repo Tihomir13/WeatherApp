@@ -1,5 +1,6 @@
 /* За всички основни браузъри */
-html, body {
+html,
+body {
   width: 100svh;
   height: 100svh;
   overflow: hidden;
@@ -11,6 +12,7 @@ html, body {
   height: 100svh; /* или 100vh */
   overflow: hidden; /* Скрива скролбарите */
   overflow-y: auto; /* Позволява вертикално скролиране */
+  background: linear-gradient(to bottom, #38c3ff, #6b24a3);
   margin: 0;
 }
 
@@ -28,16 +30,3 @@ html, body {
 .app {
   -ms-overflow-style: none; /* Скрива скролбара в Internet Explorer и Edge */
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

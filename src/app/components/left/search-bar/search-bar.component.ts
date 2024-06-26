@@ -1,24 +1,38 @@
-import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  ElementRef,
+  Renderer2,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RequestsService } from '../../../requests.service';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-search-bar',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgFor, NgIf],
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css'],
 })
-export class SearchBarComponent implements OnDestroy {
+export class SearchBarComponent implements OnInit, OnDestroy {
   @Output() select = new EventEmitter();
   searchedText = '';
   results: any[] = [];
-
   private searchSubject = new Subject<string>();
+  clickListener: any;
+  isVisible = false;
 
-  constructor(private service: RequestsService) {
+  constructor(
+    private service: RequestsService,
+    private elementRef: ElementRef,
+    private renderer: Renderer2
+  ) {
     this.searchSubject
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe((searchText) => {
@@ -34,18 +48,44 @@ export class SearchBarComponent implements OnDestroy {
       });
   }
 
-  onSearch() {
-    if (this.searchedText.trim() === '') return;
-    this.searchSubject.next(this.searchedText);
+  ngOnInit() {
+    // Добавяне на слушател за кликове към документа
+    this.clickListener = this.renderer.listen(
+      'document',
+      'click',
+      (event: MouseEvent) => {
+        this.onDocumentClick(event);
+      }
+    );
   }
 
-  ngOnDestroy() {
-    this.searchSubject.unsubscribe();
+  onSearch() {
+    if (this.searchedText.trim() === '') return;
+    this.isVisible = true;
+    this.searchSubject.next(this.searchedText);
   }
 
   onCityClick(city: any) {
     this.searchedText = '';
     console.log(city);
-    this.select.emit(city)
+    this.select.emit(city);
+    this.results = []; // Затваряне на списъка след избор
+  }
+
+  onDocumentClick(event: MouseEvent) {
+    if (this.elementRef.nativeElement.contains(event.target)) {
+      // Кликнато е вътре в компонента
+      return;
+    }
+    this.isVisible = false;
+    this.results = [];
+  }
+
+  ngOnDestroy() {
+    // Премахване на слушателя за кликове към документа
+    if (this.clickListener) {
+      this.clickListener();
+    }
+    this.searchSubject.unsubscribe();
   }
 }
