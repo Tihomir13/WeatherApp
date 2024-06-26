@@ -1,7 +1,7 @@
-<nav
+<section
   class="weekly-tab d-flex flex-column align-items-center justify-content-center mt-5"
 >
-  @for (weather of dailyWeather; track dailyWeather.timestamp) {
+  @for (weather of dailyWeather; track weather.timestamp) {
   <app-weather-day
     [day]="weather.day"
     [precProb]="weather.precipitationProb"
@@ -12,4 +12,4 @@
     [img]="weather.img"
   />
   }
-</nav>
+</section>

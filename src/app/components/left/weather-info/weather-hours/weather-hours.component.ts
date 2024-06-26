@@ -10,5 +10,4 @@ import { DatePipe } from '@angular/common';
 })
 export class WeatherHoursComponent {
   @Input() weatherHourly?: any;
-  
 }

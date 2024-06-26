@@ -1,6 +1,24 @@
-<div class="search-component d-flex mb-5">
-  <input class="search-bar form-control" type="text" />
-  <button class="search-button">
-    <img style="height: 45px; width: 45px" src="./images/Search.png" alt="" />
-  </button>
+<div class="d-flex flex-column mb-5">
+  <div class="search-component d-flex">
+    <input
+      class="search-bar form-control"
+      type="text"
+      [(ngModel)]="searchedText"
+      (ngModelChange)="onSearch()"
+    />
+    <button class="search-button" (click)="onSearch()">
+      <img style="height: 45px; width: 45px" src="./images/Search.png" alt="" />
+    </button>
+  </div>
+  <div class="search-list">
+    @if (searchedText) {
+    <ul>
+      <li class="search-result">AAA</li>
+      <li class="search-result">AAA</li>
+      <li class="search-result">AAA</li>
+      <li class="search-result">AAA</li>
+      <li class="search-result">AAA</li>
+    </ul>
+    }
+  </div>
 </div>
