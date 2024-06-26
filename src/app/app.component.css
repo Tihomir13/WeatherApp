@@ -1,17 +1,7 @@
-/* За всички основни браузъри */
-html,
-body {
-  width: 100svh;
-  height: 100svh;
-  overflow: hidden;
-  margin: 0;
-}
-
-/* Само за елементи, които искате да позволите скролиране без скролбар */
 .app {
-  height: 100svh; /* или 100vh */
-  overflow: hidden; /* Скрива скролбарите */
-  overflow-y: auto; /* Позволява вертикално скролиране */
+  height: 100svh; 
+  overflow: hidden; 
+  overflow-y: auto; 
   /* background: linear-gradient(to bottom, #38c3ff, #6b24a3); */
   background-image: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapercave.com%2Fwp%2FCqOvBFE.jpg&f=1&nofb=1&ipt=ed85b8cd928f0e6b7830b06fd56f639a0bd858943e9b7c011bf6cec99f2cb1dc&ipo=images");
   margin: 0;

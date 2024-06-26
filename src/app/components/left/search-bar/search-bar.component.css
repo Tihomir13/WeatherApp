@@ -35,11 +35,11 @@
 .search-list {
   position: absolute;
   box-shadow: 0px 2px 8px #000000;
-  width: 27.5%;
+  width: 83%;
   z-index: 1000;
   background-color: #D9D9D9;
-  top: 93px;
-  left: 170px;
+  top: 50px;
+  /* left: 170px; */
   border-radius: 20px
 }
 
@@ -58,7 +58,6 @@
 
 @media (max-width: 768px) {
   .search-list {
-    left: 14px;
-    width: 71%;
+    width: 75%;
   }
 }
