@@ -1,10 +1,9 @@
 .weather-info {
   border-radius: 30px;
   box-shadow: 0px 2px 8px #000000;
-  background: linear-gradient(to bottom, #02a3fd, #ffb700);
+  /* background: linear-gradient(to bottom, #02a3fd, #ffb700); */
 
-  backdrop-filter: blur(100px);
-  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(15px);
 }
 
 #curr-weather-main {
@@ -15,6 +14,6 @@
 @media (max-width: 768px) {
   #curr-weather-main {
     width: 45%;
-    height: 45%;
+    height: 60%;
   }
 }

@@ -1,15 +1,28 @@
 .weather-hourly {
+  position: relative; /* Задължително за псевдо-елементите */
   border-radius: 10px;
-  box-shadow: inset rgb(red, green, blue, 0.8);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8); /* Може да коригирате този ред за вашите нужди */
   max-width: 450px;
   max-height: 200px; 
   overflow-x: auto; /* Позволява хоризонтално скролиране */
-  overflow-y: auto; /* Позволява вертикално скролиране */
+  overflow-y: hidden; /* Скриива вертикалното скролиране, ако не е нужно */
   text-align: center;
   scrollbar-width: none; /* Скрива скролбара във Firefox */
   -ms-overflow-style: none; /* Скрива скролбара в Internet Explorer и Edge */
+  margin-bottom: 20px;
 }
 
 .weather-hourly::-webkit-scrollbar {
   display: none; /* Скрива скролбара в Chrome, Safari и Opera */
+}
+
+.weather-hourly::before,
+.weather-hourly::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px; /* Регулирайте ширината по ваше желание */
+  pointer-events: none; /* За да не пречат на скролването */
+  z-index: 1;
 }

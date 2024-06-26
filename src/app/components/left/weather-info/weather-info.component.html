@@ -4,7 +4,7 @@
   <h2 class="mt-4" style="text-align: center">{{ currentCity }}</h2>
   @if (weather?.current) {
   <div class="row xxl-col-12 d-flex justify-content-center align-items-center  mt-4">
-    <div class="me-4 col-1">
+    <div class="me-4 me-xxl-5 col-1">
       <app-curr-stat
         img="./images/Thermometer Up.png"
         [statistic]="weather?.current.highTemp + '°'"
@@ -16,11 +16,11 @@
     </div>
     <img
     id="curr-weather-main"
-      class="xxl-col-10 col-1"
+      class="xxl-col-10 col-3 p-0"
       [src]="weather.current.img"
       alt="weather image"
     />
-    <div class="ms-4 col-1">
+    <div class="ms-4 ms-xxl-5 col-1">
       <app-curr-stat
         img="./images/Wind.png"
         [statistic]="weather?.current.windSpeed + 'km/h'"
