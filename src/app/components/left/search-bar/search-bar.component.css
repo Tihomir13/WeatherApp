@@ -33,12 +33,14 @@
 /*-----------------------------------*/
 
 .search-list {
-  position: fixed;
+  position: absolute;
+  box-shadow: 0px 2px 8px #000000;
+  width: 27.5%;
   z-index: 1000;
   background-color: #D9D9D9;
   top: 93px;
-  left: 90px;
-  border-radius: 0px 0px 64px 64px;
+  left: 170px;
+  border-radius: 20px
 }
 
 .search-result {
@@ -50,4 +52,12 @@
 .search-result:hover {
   border-color: black; /* Променете само цвета при hover */
   cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .search-list {
+    left: 14px;
+    width: 71%;
+  }
 }
