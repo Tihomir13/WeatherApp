@@ -7,17 +7,21 @@
       (ngModelChange)="onSearch()"
     />
     <button class="search-button col-xxl-2 col-3" (click)="onSearch()">
-      <img style="height: 2.813rem; width: 2.813 rem" src="./images/Search.png" alt="" />
+      <img
+        style="height: 2.813rem; width: 2.813 rem"
+        src="./images/Search.png"
+        alt=""
+      />
     </button>
   </div>
   <div class="search-list mt-2">
-    @if (!searchedText) {
-    <ul>
-      <li class="search-result">AAA</li>
-      <li class="search-result">AAA</li>
-      <li class="search-result">AAA</li>
-      <li class="search-result">AAA</li>
-      <li class="search-result">AAA</li>
+    @if (searchedText) {
+    <ul class="p-3 m-0">
+      @for (city of results; track city.geonameId) {
+      <li class="search-result p-1">
+        {{ city.name }}, {{city.adminName1}}/<b>{{ city.countryName }}</b>
+      </li>
+      }
     </ul>
     }
   </div>

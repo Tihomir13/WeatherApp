@@ -13,6 +13,8 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class SearchBarComponent implements OnDestroy {
   searchedText = '';
+  results: any[] = [];
+
   private searchSubject = new Subject<string>();
 
   constructor(private service: RequestsService) {
@@ -20,8 +22,9 @@ export class SearchBarComponent implements OnDestroy {
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe((searchText) => {
         this.service.getCities(searchText).subscribe({
-          next: (response) => {
-            console.log(response);
+          next: (response: any) => {
+            this.results = response.geonames;
+            console.log(this.results);
           },
           error: (error) => {
             console.log('Error fetching cities:', error);
