@@ -3,6 +3,7 @@
 >
   @for (weather of dailyWeather; track weather.timestamp) {
   <app-weather-day
+  class="col-12"
     [day]="weather.day"
     [precProb]="weather.precipitationProb"
     [wind]="weather.maxWind"

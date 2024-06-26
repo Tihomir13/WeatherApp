@@ -1,11 +1,23 @@
-/* .img-stat {
+.img-stat {
   height: 2.188rem;
   width: 2.188rem;
 }
 
 @media (max-width: 768px) {
   .img-stat {
-    width: 500%;
-    height: 500%;
+    width: 80%;
+    height: 80%;
   }
-} */
+}
+
+@media (max-width: 575.98px) { /* За екрани по-малки от 576px */
+  .custom-font-size {
+    font-size: 1rem; /* Размер на шрифта за малки екрани */
+  }
+}
+
+@media (min-width: 1400px) { /* За екрани по-големи от 1400px */
+  .custom-font-size {
+    font-size: 1.16rem; /* Размер на шрифта за големи екрани */
+  }
+}

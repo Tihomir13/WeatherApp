@@ -1,10 +1,10 @@
-<main class="app row container-12 d-flex justify-content-center">
+<main class="app row container-fluid d-flex justify-content-center">
   <app-left
-    class="left-section col-xxl-6 col-12"
+    class="left-section col-xxl-6 col-12 p-0"
     [weather]="{ current: WeatherData?.current, hourly: WeatherData?.hourly }"
   />
   <app-right
-    class="right-section col-xxl-6 col-12"
+    class="right-section col-xxl-6 col-12 p-0"
     [dailyWeather]="WeatherData?.daily"
   />
 </main>

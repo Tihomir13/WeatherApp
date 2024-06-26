@@ -5,8 +5,7 @@
 
 @media (max-width: 768px) {
   .img-stat {
-    width: 500%;
-    height: 500%;
+    width: 300%;
+    height: 300%;
   }
-  
 }

@@ -1,53 +1,43 @@
-.app {
+/* За всички основни браузъри */
+html, body {
+  width: 100svh;
   height: 100svh;
-  /* background: linear-gradient(to bottom, #38C3FF, #6B24A3); */
-  padding: 0;
+  overflow: hidden;
+  margin: 0;
 }
 
-@media (max-width: 768px) {
-  html {
-    font-size: 2px; /* Намаляване на размера на снимките с 50% */
-  }
+/* Само за елементи, които искате да позволите скролиране без скролбар */
+.app {
+  height: 100svh; /* или 100vh */
+  overflow: hidden; /* Скрива скролбарите */
+  overflow-y: auto; /* Позволява вертикално скролиране */
+  margin: 0;
 }
 
-/* .left-section {
-    padding: 0;
+/* Специфично за скриване на скролбара, но позволяване на скролиране */
+.app::-webkit-scrollbar {
+  display: none; /* Скрива скролбара в Chrome, Safari и Opera */
 }
 
-.right-section {
-    padding: 0;
-} */
-
-p {
-  font-size: 1rem; /* По подразбиране размер на шрифта */
+/* Firefox */
+.app {
+  scrollbar-width: none; /* Скрива скролбара във Firefox */
 }
 
-@media (min-width: 576px) {
-  p {
-    font-size: 1.2rem; /* Размер на шрифта за малки екрани (sm) */
-  }
+/* Internet Explorer и Edge */
+.app {
+  -ms-overflow-style: none; /* Скрива скролбара в Internet Explorer и Edge */
 }
 
-@media (min-width: 768px) {
-  p {
-    font-size: 1.4rem; /* Размер на шрифта за средни екрани (md) */
-  }
-}
 
-@media (min-width: 992px) {
-  p {
-    font-size: 1.6rem; /* Размер на шрифта за големи екрани (lg) */
-  }
-}
 
-@media (min-width: 1200px) {
-  p {
-    font-size: 1.8rem; /* Размер на шрифта за много големи екрани (xl) */
-  }
-}
 
-@media (min-width: 1400px) {
-  p {
-    font-size: 2rem; /* Размер на шрифта за изключително големи екрани (xxl) */
-  }
-}
+
+
+
+
+
+
+
+
+

@@ -16,7 +16,7 @@
     </div>
     <img
     id="curr-weather-main"
-      class="xxl-col-10 col-2"
+      class="xxl-col-10 col-1"
       [src]="weather.current.img"
       alt="weather image"
     />
@@ -36,6 +36,6 @@
   </h2>
   <h4 class="mt-2">{{ weather?.current.description }}</h4>
   <p class="mt-2">Feels like: {{ weather?.current.feelsLike }}</p>
-  <app-weather-hours [weatherHourly]="weather?.hourly" />
+  <app-weather-hours class="col-xxl-9 col-10" [weatherHourly]="weather?.hourly" />
   }
 </article>

@@ -42,9 +42,9 @@ export class WeatherParserService {
         timestamp: time * 1000,
         precipitationProb:
           Math.round(daily.precipitation_probability_max[index] * 100) / 100,
-        maxWind: daily.wind_speed_10m_max[index],
-        maxTemp: daily.temperature_2m_max[index],
-        minTemp: daily.temperature_2m_min[index],
+        maxWind: Math.round(daily.wind_speed_10m_max[index]),
+        maxTemp: Math.round(daily.temperature_2m_max[index]),
+        minTemp: Math.round(daily.temperature_2m_min[index]),
         iconCode: daily.weather_code[index],
         day: this.parseIntToDay(String(new Date(time * 1000).getDay())),
         img: this.parseCodeToImg(String(daily.weather_code[index])),
