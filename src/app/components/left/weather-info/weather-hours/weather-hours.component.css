@@ -2,7 +2,7 @@
   border-radius: 10px;
   box-shadow: inset rgb(red, green, blue, 0.8);
   max-width: 450px;
-  max-height: 200px; /* Опционално, за да ограничите височината на контейнера */
+  max-height: 200px; 
   overflow-x: auto; /* Позволява хоризонтално скролиране */
   overflow-y: auto; /* Позволява вертикално скролиране */
   text-align: center;

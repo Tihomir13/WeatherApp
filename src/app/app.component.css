@@ -1,13 +1,53 @@
 .app {
   height: 100svh;
-  background: linear-gradient(to bottom, #38C3FF, #6B24A3);
+  /* background: linear-gradient(to bottom, #38C3FF, #6B24A3); */
   padding: 0;
 }
 
-.left-section {
+@media (max-width: 768px) {
+  html {
+    font-size: 2px; /* Намаляване на размера на снимките с 50% */
+  }
+}
+
+/* .left-section {
     padding: 0;
 }
 
 .right-section {
     padding: 0;
+} */
+
+p {
+  font-size: 1rem; /* По подразбиране размер на шрифта */
+}
+
+@media (min-width: 576px) {
+  p {
+    font-size: 1.2rem; /* Размер на шрифта за малки екрани (sm) */
+  }
+}
+
+@media (min-width: 768px) {
+  p {
+    font-size: 1.4rem; /* Размер на шрифта за средни екрани (md) */
+  }
+}
+
+@media (min-width: 992px) {
+  p {
+    font-size: 1.6rem; /* Размер на шрифта за големи екрани (lg) */
+  }
+}
+
+@media (min-width: 1200px) {
+  p {
+    font-size: 1.8rem; /* Размер на шрифта за много големи екрани (xl) */
+  }
+}
+
+@media (min-width: 1400px) {
+  p {
+    font-size: 2rem; /* Размер на шрифта за изключително големи екрани (xxl) */
+  }
 }

@@ -2,7 +2,6 @@
   border-color: white;
   border-radius: 64px;
   transition: border 0.2s, border-radius 0.5s;
-  width: 622px;
 }
 
 .day-component:hover {

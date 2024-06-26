@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { WeatherInfoComponent } from './weather-info/weather-info.component';
-import { WeatherData } from '../../app.component';
 
 @Component({
   selector: 'app-left',

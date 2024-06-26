@@ -1,0 +1,12 @@
+.img-stat {
+  height: 2.188rem;
+  width: 2.188rem;
+}
+
+@media (max-width: 768px) {
+  .img-stat {
+    width: 500%;
+    height: 500%;
+  }
+  
+}

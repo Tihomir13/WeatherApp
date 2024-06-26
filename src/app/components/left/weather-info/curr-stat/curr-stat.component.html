@@ -1,9 +1,6 @@
-<div
-  class="d-flex flex-column mt-5"
-  style="height: 50px; width: 50px; text-align: center"
->
-  <img style="height: 35px; width: 35px" [src]="img" alt="" />
-  <p style="font-size: 25px">
-    <b>{{ statistic }}</b>
-  </p>
+<div class="stat d-flex flex-column mt-5 align-items-center" style="text-align: center">
+  <img class="img-stat" [src]="img" alt="" />
+  <label class="fs-3">
+    {{ statistic }}
+  </label>
 </div>
