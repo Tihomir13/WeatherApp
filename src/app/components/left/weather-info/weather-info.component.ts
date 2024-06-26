@@ -10,27 +10,7 @@ import { RequestsService } from '../../../requests.service';
   templateUrl: './weather-info.component.html',
   styleUrl: './weather-info.component.css',
 })
-export class WeatherInfoComponent implements OnInit {
+export class WeatherInfoComponent {
   @Input() weather?: any;
-  currentCity?: string;
-
-  constructor(private request: RequestsService) {}
-  ngOnInit(): void {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        const data = this.request
-          .getCurrCity(latitude.toString(), longitude.toString())
-          .subscribe({
-            next: (response: any) => {
-              this.currentCity = response.geonames[0].name;
-            },
-            error: (error) => console.log(error),
-          });
-      },
-      (error) => {
-        console.log('Грешка при получаване на местоположението:', error);
-      }
-    );
-  }
+  @Input() currentCity?: string;
 }

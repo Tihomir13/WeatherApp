@@ -18,7 +18,7 @@
     @if (searchedText) {
     <ul class="p-3 m-0">
       @for (city of results; track city.geonameId) {
-      <li class="search-result p-1">
+      <li class="search-result p-1" (click)="onCityClick(city)">
         {{ city.name }}, {{city.adminName1}}/<b>{{ city.countryName }}</b>
       </li>
       }

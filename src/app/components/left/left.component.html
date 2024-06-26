@@ -1,6 +1,6 @@
 <article class="d-flex flex-column mt-5">
-  <app-search-bar class="d-flex justify-content-center align-content-center" />
+  <app-search-bar class="d-flex justify-content-center align-content-center" (select)="onGetCity($event)"/>
   <app-weather-info
-    class="d-flex justify-content-center align-content-center" [weather]="weather"
+    class="d-flex justify-content-center align-content-center" [weather]="weather" [currentCity]="currentCity"
   />
 </article>

@@ -141,7 +141,7 @@ export class WeatherParserService {
       '55': './images/day/53, 55, 57.png',
       '56': './images/day/51, 56.png',
       '57': './images/day/53, 55, 57.png',
-      '61': './images/day/61, 68.png',
+      '61': './images/day/61, 80.png',
       '63': './images/day/63, 65, 66, 67, 81, 82.png',
       '65': './images/day/63, 65, 66, 67, 81, 82.png',
       '66': './images/day/63, 65, 66, 67, 81, 82.png',

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LeftComponent } from './components/left/left.component';
 import { RightComponent } from './components/right/right.component';
@@ -21,6 +21,7 @@ export interface WeatherData {
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
+  @Input() currentCity: any;
   title = 'WeatherApp';
   WeatherData?: WeatherData;
 
@@ -48,6 +49,61 @@ export class AppComponent implements OnInit {
               };
               this.WeatherData = data;
               console.log(this.WeatherData);
+              this.initCity();
+            },
+            error: (error) => console.log(error),
+          });
+      },
+      (error) => {
+        console.log('Грешка при получаване на местоположението:', error);
+      }
+    );
+  }
+
+  onNewCity(information: any) {
+    const data = this.request
+      .getData(
+        information.lat.toString(),
+        information.lng.toString(),
+        Intl.DateTimeFormat().resolvedOptions().timeZone
+      )
+      .subscribe({
+        next: (response) => {
+          const data = {
+            current: this.weather.parseCurrentWeather(response),
+            daily: this.weather.parseDailyWeather(response),
+            hourly: this.weather.parseHourlyWeather(response),
+          };
+          this.WeatherData = data;
+
+          this.initCity(information.lat, information.lng);
+          console.log(this.WeatherData);
+        },
+        error: (error) => console.log(error),
+      });
+  }
+
+  initCity(latitude?: string, longitude?: string) {
+    if (latitude && longitude) {
+      this.request
+        .getCurrCity(latitude.toString(), longitude.toString())
+        .subscribe({
+          next: (response: any) => {
+            this.currentCity = response.geonames[0].name;
+          },
+          error: (error) => console.log(error),
+        });
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        const data = this.request
+          .getCurrCity(latitude.toString(), longitude.toString())
+          .subscribe({
+            next: (response: any) => {
+              this.currentCity = response.geonames[0].name;
             },
             error: (error) => console.log(error),
           });

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { WeatherInfoComponent } from './weather-info/weather-info.component';
 
@@ -11,4 +11,10 @@ import { WeatherInfoComponent } from './weather-info/weather-info.component';
 })
 export class LeftComponent {
   @Input() weather?: { current?: object; hourly?: object };
+  @Input() currentCity: any;
+  @Output() sendingToApp = new EventEmitter();
+
+  onGetCity(event: any) {
+    this.sendingToApp.emit(event);
+  }
 }

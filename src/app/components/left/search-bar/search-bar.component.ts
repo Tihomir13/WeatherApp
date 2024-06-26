@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RequestsService } from '../../../requests.service';
 import { Subject } from 'rxjs';
@@ -12,6 +12,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent implements OnDestroy {
+  @Output() select = new EventEmitter();
   searchedText = '';
   results: any[] = [];
 
@@ -40,5 +41,11 @@ export class SearchBarComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.searchSubject.unsubscribe();
+  }
+
+  onCityClick(city: any) {
+    this.searchedText = '';
+    console.log(city);
+    this.select.emit(city)
   }
 }
