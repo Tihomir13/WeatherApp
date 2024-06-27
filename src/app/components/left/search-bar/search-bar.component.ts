@@ -33,19 +33,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     private elementRef: ElementRef,
     private renderer: Renderer2
   ) {
-    this.searchSubject
-      .pipe(debounceTime(300), distinctUntilChanged())
-      .subscribe((searchText) => {
-        this.service.getCities(searchText).subscribe({
-          next: (response: any) => {
-            this.results = response.geonames;
-            console.log(this.results);
-          },
-          error: (error) => {
-            console.log('Error fetching cities:', error);
-          },
-        });
-      });
+    this.loadList();
   }
 
   ngOnInit() {
@@ -65,6 +53,10 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     this.searchSubject.next(this.searchedText);
   }
 
+  onButtonClick() {
+
+  }
+
   onCityClick(city: any) {
     this.searchedText = '';
     console.log(city);
@@ -74,11 +66,31 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
   onDocumentClick(event: MouseEvent) {
     if (this.elementRef.nativeElement.contains(event.target)) {
-      // Кликнато е вътре в компонента
-      return;
+      if (this.searchedText != '') {
+        this.isVisible = true;
+        this.searchSubject.next(this.searchedText);
+        this.loadList();
+        return;
+      }
     }
     this.isVisible = false;
     this.results = [];
+  }
+
+  loadList() {
+    this.searchSubject
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((searchText) => {
+        this.service.getCities(searchText).subscribe({
+          next: (response: any) => {
+            this.results = response.geonames;
+            console.log(this.results);
+          },
+          error: (error) => {
+            console.log('Error fetching cities:', error);
+          },
+        });
+      });
   }
 
   ngOnDestroy() {

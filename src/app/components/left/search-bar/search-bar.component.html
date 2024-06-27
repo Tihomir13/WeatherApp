@@ -1,4 +1,7 @@
-<div class="d-flex flex-column mb-5 col-xxl-8 col-12" style="position: relative;">
+<div
+  class="d-flex flex-column mb-5 col-xxl-8 col-12"
+  style="position: relative"
+>
   <div class="search-component d-flex">
     <input
       class="search-bar form-control"
@@ -6,16 +9,20 @@
       [(ngModel)]="searchedText"
       (ngModelChange)="onSearch()"
     />
-    <button class="search-button col-xxl-2 col-3" (click)="onSearch()">
+    <button
+      style="height: 2.813rem"
+      class="search-button col-xxl-2 col-3"
+      (click)="onButtonClick()"
+    >
       <img
-        style="height: 2.813rem; width: 2.813 rem"
+        style="height: 2rem; width: 2 rem"
         src="./images/Search.png"
         alt=""
       />
     </button>
   </div>
   <div class="search-list mt-2">
-    @if (isVisible && results.length > 0) {
+    @if (isVisible && results.length > 0 && searchedText != '') {
     <ul class="p-3 m-0">
       @for (city of results; track city.geonameId) {
       <li class="search-result p-1" (click)="onCityClick(city)">
