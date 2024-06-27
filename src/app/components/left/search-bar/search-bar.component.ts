@@ -59,7 +59,6 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
   onCityClick(city: any) {
     this.searchedText = '';
-    console.log(city);
     this.select.emit(city);
     this.results = []; // Затваряне на списъка след избор
   }
@@ -68,8 +67,6 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     if (this.elementRef.nativeElement.contains(event.target)) {
       if (this.searchedText != '') {
         this.isVisible = true;
-        this.searchSubject.next(this.searchedText);
-        this.loadList();
         return;
       }
     }
@@ -83,7 +80,6 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         this.service.getCities(searchText).subscribe({
           next: (response: any) => {
             this.results = response.geonames;
-            console.log(this.results);
           },
           error: (error) => {
             console.log('Error fetching cities:', error);

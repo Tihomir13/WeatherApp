@@ -48,7 +48,6 @@ export class AppComponent implements OnInit {
                 hourly: this.weather.parseHourlyWeather(response),
               };
               this.WeatherData = data;
-              console.log(this.WeatherData);
               this.initCity();
             },
             error: (error) => console.log(error),
@@ -83,7 +82,6 @@ export class AppComponent implements OnInit {
           this.WeatherData = data;
 
           this.initCity(information.lat, information.lng);
-          console.log(this.WeatherData);
         },
         error: (error) => console.log(error),
       });
