@@ -54,7 +54,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   }
 
   onButtonClick() {
-
+    this.onCityClick(this.results[0]);
   }
 
   onCityClick(city: any) {
@@ -74,7 +74,6 @@ export class SearchBarComponent implements OnInit, OnDestroy {
       }
     }
     this.isVisible = false;
-    this.results = [];
   }
 
   loadList() {
