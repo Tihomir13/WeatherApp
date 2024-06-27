@@ -4,6 +4,7 @@
 >
   <div class="search-component d-flex">
     <input
+      #searchBar
       class="search-bar form-control"
       type="text"
       [(ngModel)]="searchedText"
@@ -23,7 +24,7 @@
   </div>
   <div class="search-list mt-2">
     @if (isVisible && results.length > 0 && searchedText != '') {
-    <ul class="p-3 m-0">
+    <ul class="p-3 m-0" [style.width]="searchBarWidth+'px'">
       @for (city of results; track city.geonameId) {
       <li class="search-result p-1" (click)="onCityClick(city)">
         {{ city.name }}, {{ city.adminName1 }}/<b>{{ city.countryName }}</b>

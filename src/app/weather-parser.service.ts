@@ -162,4 +162,32 @@ export class WeatherParserService {
 
     return codeDescriptions[code] || 'Invalid code';
   }
+
+   capitals = [
+    { city: "Sofia", country: "Bulgaria", lat: 42.6977, lng: 23.3219 },
+    { city: "Washington, D.C.", country: "USA", lat: 38.89511, lng: -77.03637 },
+    { city: "London", country: "UK", lat: 51.5074, lng: -0.1278 },
+    { city: "Paris", country: "France", lat: 48.8566, lng: 2.3522 },
+    { city: "Berlin", country: "Germany", lat: 52.5200, lng: 13.4050 },
+    { city: "Tokyo", country: "Japan", lat: 35.6895, lng: 139.6917 },
+    { city: "Canberra", country: "Australia", lat: -35.2809, lng: 149.1300 },
+    { city: "Ottawa", country: "Canada", lat: 45.4215, lng: -75.6972 },
+    { city: "Beijing", country: "China", lat: 39.9042, lng: 116.4074 },
+    { city: "Moscow", country: "Russia", lat: 55.7558, lng: 37.6173 },
+    { city: "New Delhi", country: "India", lat: 28.6139, lng: 77.2090 },
+    { city: "Brasília", country: "Brazil", lat: -15.8267, lng: -47.9218 },
+    { city: "Buenos Aires", country: "Argentina", lat: -34.6037, lng: -58.3816 },
+    { city: "Cairo", country: "Egypt", lat: 30.0444, lng: 31.2357 },
+    { city: "Pretoria", country: "South Africa", lat: -25.7479, lng: 28.2293 },
+    { city: "Riyadh", country: "Saudi Arabia", lat: 24.7136, lng: 46.6753 },
+    { city: "Bangkok", country: "Thailand", lat: 13.7563, lng: 100.5018 },
+    { city: "Mexico City", country: "Mexico", lat: 19.4326, lng: -99.1332 },
+    { city: "Jakarta", country: "Indonesia", lat: -6.2088, lng: 106.8456 },
+    { city: "Nairobi", country: "Kenya", lat: -1.2864, lng: 36.8172 },
+  ];
+
+  getRandomCity(){
+    return this.capitals[Math.floor(Math.random()*this.capitals.length-1)]
+  }
+  
 }

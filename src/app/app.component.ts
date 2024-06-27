@@ -54,18 +54,19 @@ export class AppComponent implements OnInit {
           });
       },
       (error) => {
-        const information = {
-          lat: String(Math.random() * 100),
-          lng: String(Math.random() * 100),
-        };
 
-        this.onNewCity(information);
+
+        this.onNewCity();
         console.log('Грешка при получаване на местоположението:', error);
       }
     );
   }
 
-  onNewCity(information: any) {
+  onNewCity(information?: any) {
+    if (information === undefined) {
+      information = this.weather.getRandomCity();
+    }
+
     const data = this.request
       .getData(
         information.lat.toString(),

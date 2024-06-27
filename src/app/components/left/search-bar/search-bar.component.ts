@@ -6,27 +6,31 @@ import {
   Output,
   ElementRef,
   Renderer2,
+  ViewChild,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RequestsService } from '../../../requests.service';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-search-bar',
   standalone: true,
-  imports: [FormsModule, NgFor, NgIf],
+  imports: [FormsModule],
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent implements OnInit, OnDestroy {
+  @ViewChild('searchBar', { static: true }) searchBar!: ElementRef;
+
   @Output() select = new EventEmitter();
   searchedText = '';
   results: any[] = [];
   private searchSubject = new Subject<string>();
   clickListener: any;
   isVisible = false;
+  searchBarWidth = '';
+  private resizeListener!: () => void; // Променлива за слушателя за resize
 
   constructor(
     private service: RequestsService,
@@ -45,12 +49,19 @@ export class SearchBarComponent implements OnInit, OnDestroy {
         this.onDocumentClick(event);
       }
     );
+
+    this.resizeListener = this.renderer.listen('window', 'resize', () => {
+      this.logSearchBarWidth();
+    });
+
+    this.logSearchBarWidth();
   }
 
   onSearch() {
     if (this.searchedText.trim() === '') return;
     this.isVisible = true;
     this.searchSubject.next(this.searchedText);
+    this.logSearchBarWidth();
   }
 
   onButtonClick() {
@@ -66,6 +77,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   onDocumentClick(event: MouseEvent) {
     if (this.elementRef.nativeElement.contains(event.target)) {
       if (this.searchedText != '') {
+        this.logSearchBarWidth();
         this.isVisible = true;
         return;
       }
@@ -88,10 +100,18 @@ export class SearchBarComponent implements OnInit, OnDestroy {
       });
   }
 
+  logSearchBarWidth(): void {
+    this.searchBarWidth = this.searchBar.nativeElement.offsetWidth;
+  }
+
   ngOnDestroy() {
     // Премахване на слушателя за кликове към документа
     if (this.clickListener) {
       this.clickListener();
+    }
+    // Премахване на слушателя за resize събитие
+    if (this.resizeListener) {
+      this.resizeListener();
     }
     this.searchSubject.unsubscribe();
   }
