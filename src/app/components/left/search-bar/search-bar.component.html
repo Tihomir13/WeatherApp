@@ -2,18 +2,19 @@
   class="d-flex flex-column mb-5 col-xxl-8 col-md-8 col-12"
   style="position: relative"
 >
-  <div class="search-component d-flex">
+  <form class="search-component d-flex" (ngSubmit)="onSubmit()">
     <input
       #searchBar
       class="search-bar form-control"
       type="text"
       [(ngModel)]="searchedText"
+      [ngModelOptions]="{standalone: true}"
       (ngModelChange)="onSearch()"
     />
     <button
+      type="submit"
       style="height: 2.813rem"
       class="search-button col-xxl-2 col-3"
-      (click)="onButtonClick()"
     >
       <img
         style="height: 2rem; width: 2 rem"
@@ -21,10 +22,10 @@
         alt=""
       />
     </button>
-  </div>
+  </form>
   <div class="search-list mt-2">
     @if (isVisible && results.length > 0 && searchedText != '') {
-    <ul class="p-3 m-0" [style.width]="searchBarWidth+'px'">
+    <ul class="p-3 m-0" [style.width]="searchBarWidth + 'px'">
       @for (city of results; track city.geonameId) {
       <li class="search-result p-1" (click)="onCityClick(city)">
         {{ city.name }}, {{ city.adminName1 }}/<b>{{ city.countryName }}</b>

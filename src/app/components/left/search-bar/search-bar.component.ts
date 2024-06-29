@@ -63,7 +63,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     this.logSearchBarWidth();
   }
 
-  onButtonClick() {
+  onSubmit() {
     this.onCityClick(this.results[0]);
   }
 
