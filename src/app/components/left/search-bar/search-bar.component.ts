@@ -34,7 +34,6 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
   constructor(
     private service: RequestsService,
-    private elementRef: ElementRef,
     private renderer: Renderer2
   ) {
     this.loadList();
@@ -75,7 +74,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   }
 
   onDocumentClick(event: MouseEvent) {
-    if (this.elementRef.nativeElement.contains(event.target)) {
+    if (this.searchBar.nativeElement.contains(event.target)) {
       if (this.searchedText != '') {
         this.logSearchBarWidth();
         this.isVisible = true;

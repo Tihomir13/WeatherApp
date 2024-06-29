@@ -1,5 +1,5 @@
 <article
-  class="weather-info d-flex flex-column mt-1 align-items-center col-xxl-8 col-12"
+  class="weather-info d-flex flex-column mt-1 align-items-center col-xxl-8 col-md-8 col-12"
 >
   <h2 class="mt-4" style="text-align: center">{{ currentCity }}</h2>
   @if (weather?.current) {
@@ -36,6 +36,6 @@
   </h2>
   <h4 class="mt-2">{{ weather?.current.description }}</h4>
   <p class="mt-2">Feels like: {{ weather?.current.feelsLike + '°'}}</p>
-  <app-weather-hours class="col-xxl-9 col-10" [weatherHourly]="weather?.hourly" />
+  <app-weather-hours class="col-xxl-9 col-md-6 col-10" [weatherHourly]="weather?.hourly" />
   }
 </article>
